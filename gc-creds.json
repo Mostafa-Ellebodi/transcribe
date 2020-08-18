@@ -1,4 +1,3 @@
-%%writefile gc-creds.json
 {
   "type": "service_account",
   "project_id": "transcribe-286800",
