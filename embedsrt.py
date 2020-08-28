@@ -25,21 +25,26 @@ def calaulate_paths():
             filelst.append(fname)
 
         # places .mp4 and .srt file name into dictionary
-        filedict = {}
-        if len(filelst) == 2:
-            if ".srt" in filelst[0]:
-                filedict["srt"] = filelst[0]
-                filedict["mp4"] = filelst[1]
-            else:
-                filedict["srt"] = filelst[1]
-                filedict["mp4"] = filelst[0]
-
-            logging.info(filedict)
-            logging.info(dirName)
+        # filedict = {}
+        # if len(filelst) == 2:
+        #     if ".srt" in filelst[0]:
+        #         filedict["srt"] = filelst[0]
+        #         filedict["mp4"] = filelst[1]
+        #     else:
+        #         filedict["srt"] = filelst[1]
+        #         filedict["mp4"] = filelst[0]
+        for fn in filelst:
+            if ".srt" in fn:
+                filedict={}
+                filedict["srt"] = fn
+                filedict["mp4"] = fn[:-4] +".mp4"
+                paths.append([filedict, os.path.join(dirName, filedict["mp4"]), os.path.join(dirName, filedict["srt"])])
+            # logging.info(filedict)
+            # logging.info(dirName)
 
         # append dictionary to sublist along with path to mp4 and path to srt
         # append sublist to paths
-        paths.append([filedict, os.path.join(dirName, filedict.get("mp4")), os.path.join(dirName, filedict.get("srt")) ])
+        # paths.append([filedict, os.path.join(dirName, filedict.get("mp4")), os.path.join(dirName, filedict.get("srt")) ])
     return paths
 
 
