@@ -1,5 +1,6 @@
 import moviepy.editor as mp
 import sys
+import os
 
 def add_logo(logo_dir, video_dir):
     logo_image = str(os.listdir(logo_dir)[0])
