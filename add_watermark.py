@@ -2,8 +2,8 @@ import moviepy.editor as mp
 import sys
 
 def add_logo(logo_dir, video_dir):
-    logo_image = str(os.listdir("/content/transcribe/logo")[0])
-    video_file = os.listdir("/content/transcribe/videos")
+    logo_image = str(os.listdir(logo_dir)[0])
+    video_file = os.listdir(video_dir)
 
     for fn in video_file:
       video = mp.VideoFileClip(video_dir+"/"+ fn)
