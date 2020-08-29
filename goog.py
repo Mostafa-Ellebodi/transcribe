@@ -10,7 +10,7 @@ def transcribe_gcs(mp4_file):
     audio_file_path = process_video(mp4_file) #Create audio file
 
     if audio_file_path:
-        bucket_name = 'transcribe-api' # Your gcloud bucket name
+        bucket_name = 'video-srt' # Your gcloud bucket name
         print(mp4_file)
         audio_file_name = os.path.basename(audio_file_path) + '.ogg'
         print(audio_file_name)
