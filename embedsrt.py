@@ -4,6 +4,7 @@ import pprint
 import subprocess
 import sys
 import logging
+import shutil
 
 # print(subprocess.check_output(['ls']).decode())
 # ffmpeg -i infile.mp4 -i infile.srt -c copy -c:s mov_text outfile.mp4
