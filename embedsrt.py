@@ -102,7 +102,7 @@ def embed_srt(root_dir):
     fn_outputs = os.listdir(os.path.join(root_dir, "output"))
     fn_inputs = []
     for fn in os.listdir(root_dir):
-        if fn.endswith(.mp4):
+        if fn.endswith(".mp4"):
             fn_inputs.append(fn)
             
     for fn in fn_outputs:
