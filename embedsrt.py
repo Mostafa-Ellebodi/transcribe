@@ -96,3 +96,20 @@ def embed_srt(root_dir):
         logging.info(commandresult.stdout.decode())
 
         logging.info("completed encoding, starting next")
+    
+    #The below cell is to ensure that even if the video is without subtiles 
+    # the watermarked version of it would still be copied to the output folder
+    fn_outputs = os.listdir(os.path.join(root_dir, "output"))
+    fn_inputs = []
+    for fn in os.listdir(root_dir):
+        if fn.endswith(.mp4):
+            fn_inputs.append(fn)
+            
+    for fn in fn_outputs:
+        if fn not in fn_inputs:
+            src_dir = os.path.join(root_dir, fn)
+            dest_dir = os.path.join(root_dir, "output",fn)
+            shutil.copyfile(src_dir, dest_dir)
+            
+    
+    
