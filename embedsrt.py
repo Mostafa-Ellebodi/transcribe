@@ -70,7 +70,7 @@ def embed_srt(root_dir):
 
         pass
 
-    paths = calaulate_paths()
+    paths = calaulate_paths(root_dir)
     print("hello")
     for i in paths:
         logging.info("starting subtitle encoding of " + str(i[0].get('mp4')))
@@ -86,7 +86,7 @@ def embed_srt(root_dir):
         commandtorun[4] = i[2]
 
         # outfile
-        commandtorun[9] = os.path.join(rootDir, "output", i[0].get('mp4'))
+        commandtorun[9] = os.path.join(root_dir, "output", i[0].get('mp4'))
         logging.info("command to run: " + str(commandtorun))
 
         # # executes command
