@@ -8,10 +8,18 @@ def clean_mkdir(path):
         shutil.rmtree(path)
     os.makedirs(path)
 
-out_videos = "converted_videos"
+out_videos_dir = "converted_videos"
 clean_mkdir(out_videos)
 
 def convert_to_mp4_and_add_logo(logo_dir, video_dir):
+    def clean_mkdir(path):
+        if Path(path).exists():
+            shutil.rmtree(path)
+        os.makedirs(path)
+
+    out_videos_dir = "converted_videos"
+    clean_mkdir(out_videos_dir)        
+    
     logo_image = str(os.listdir(logo_dir)[0])
     video_names = os.listdir(video_dir)
 
@@ -36,3 +44,4 @@ def convert_to_mp4_and_add_logo(logo_dir, video_dir):
             except:
                 print("Sorry format of file {} is not supported!" .format(fn) )
                 continue
+    return out_videos_dir
