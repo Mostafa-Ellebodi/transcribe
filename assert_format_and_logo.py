@@ -17,13 +17,17 @@ def convert_to_mp4_and_add_logo(logo_dir, video_dir):
     video_names = os.listdir(video_dir)
 
     for fn in video_names:
-        video = mp.VideoFileClip(video_dir+"/"+ fn)
+        try:            
+            video = mp.VideoFileClip(video_dir+"/"+ fn)
 
-        logo = (mp.ImageClip(logo_dir+"/"+logo_image)
-                .set_duration(video.duration)
-                .resize(height=40) # if you need to resize...
-                .margin(right=8, top=8, opacity=0.5) # (optional) logo-border padding
-                .set_pos(("right","top")))
+            logo = (mp.ImageClip(logo_dir+"/"+logo_image)
+                    .set_duration(video.duration)
+                    .resize(height=40) # if you need to resize...
+                    .margin(right=8, top=8, opacity=0.5) # (optional) logo-border padding
+                    .set_pos(("right","top")))
+        except:
+            print("Sorry format of file {} is not supported, so the file would be ignored" .format(fn))
+            continue
 
         if fn.endswith('.mp4'):
             final = mp.CompositeVideoClip([video, logo])
@@ -35,6 +39,6 @@ def convert_to_mp4_and_add_logo(logo_dir, video_dir):
                 final = mp.CompositeVideoClip([video, logo])
                 final.write_videofile(out_videos_dir+ "/" + fn_trim + ".mp4")
             except:
-                print("Sorry format of file {} is not supported!" .format(fn) )
+                print("Sorry format of file {} is not supported!" .format(fn))
                 continue
     return out_videos_dir
