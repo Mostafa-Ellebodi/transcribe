@@ -1,4 +1,4 @@
-#subtiltes generation, subtitles embedding and watermarking videos
+# subtiltes generation, subtitles embedding and watermarking videos
 
 This repository serves the following purposes:
 
@@ -8,16 +8,16 @@ This repository serves the following purposes:
 (some media players don't show subtitles by default, so you may need to enable it manually)
 
 
-##Instructions for use
+## Instructions for use
 There are two options for use:
-###1. Google Colab
+### 1. Google Colab
 This is the most easy and convinent way 
 1. In transcribe folder add the logo in logos directory and videos in videos directory
 2. upload the notebook to google drive.
 3. upload transcribe to the opened notebook and run the cells.
 That's it! the code will run automatically and downloads the output videos after finishing.
 
-###2. Running on the local machine
+### 2. Running on the local machine
 
 Use the Cloud Platform Console to create a new Cloud
 Platform project and enable billing: https://console.cloud.google.com/
