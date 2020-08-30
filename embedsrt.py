@@ -11,7 +11,7 @@ import logging
 # rootDir = (os.path.dirname(os.path.realpath(__file__)))
 
 
-def calaulate_paths():
+def calaulate_paths(rootDir):
     paths = []
 
     for dirName, subdirList, fileList in os.walk(rootDir):
@@ -48,53 +48,51 @@ def calaulate_paths():
     return paths
 
 
-# create and config logging object
-logging.basicConfig(level=logging.DEBUG,
-                    format=' %(asctime)s - %(levelname)s- %(message)s')
+def embed_srt(root_dir):
+    # create and config logging object
+    logging.basicConfig(level=logging.DEBUG,
+                        format=' %(asctime)s - %(levelname)s- %(message)s')
 
-# when verbosity is DISABLED, run this
-# logging.disable(logging.CRITICAL)
+    # when verbosity is DISABLED, run this
+    # logging.disable(logging.CRITICAL)
 
-# getting path from terminal
-rootDir = sys.argv[1]
-
-# creating output folder
-try:
-    os.mkdir(os.path.join(rootDir, "output"))
-    logging.debug("created 'output' folder")
-except FileExistsError as e:
-    logging.debug("'output' folder already exists. deleting folder")
-    os.rmdir(os.path.join(rootDir, "output"))
-    logging.debug("'output' folder deleted. creating new 'output' folder")
-    os.mkdir(os.path.join(rootDir, "output"))
-    logging.debug("created 'output' folder")
+    # creating output folder
+    try:
+        os.mkdir(os.path.join(rootDir, "output"))
+        logging.debug("created 'output' folder")
+    except FileExistsError as e:
+        logging.debug("'output' folder already exists. deleting folder")
+        os.rmdir(os.path.join(rootDir, "output"))
+        logging.debug("'output' folder deleted. creating new 'output' folder")
+        os.mkdir(os.path.join(rootDir, "output"))
+        logging.debug("created 'output' folder")
 
 
-    pass
+        pass
 
-paths = calaulate_paths()
-print("hello")
-for i in paths:
-    logging.info("starting subtitle encoding of " + str(i[0].get('mp4')))
+    paths = calaulate_paths()
+    print("hello")
+    for i in paths:
+        logging.info("starting subtitle encoding of " + str(i[0].get('mp4')))
 
-    # command that will invoke ffmpeg to embert srt as a stream
-    commandtorun = ['ffmpeg', '-i', 'infile', '-i',
-                    'infilesub', '-c', 'copy', '-c:s', 'mov_text', 'outfile']
+        # command that will invoke ffmpeg to embert srt as a stream
+        commandtorun = ['ffmpeg', '-i', 'infile', '-i',
+                        'infilesub', '-c', 'copy', '-c:s', 'mov_text', 'outfile']
 
-    # infile video
-    commandtorun[2] = i[1]
+        # infile video
+        commandtorun[2] = i[1]
 
-    # infile srt
-    commandtorun[4] = i[2]
+        # infile srt
+        commandtorun[4] = i[2]
 
-    # outfile
-    commandtorun[9] = os.path.join(rootDir, "output", i[0].get('mp4'))
-    logging.info("command to run: " + str(commandtorun))
+        # outfile
+        commandtorun[9] = os.path.join(rootDir, "output", i[0].get('mp4'))
+        logging.info("command to run: " + str(commandtorun))
 
-    # # executes command
-    commandresult = subprocess.run(commandtorun, stdout=subprocess.PIPE)
+        # # executes command
+        commandresult = subprocess.run(commandtorun, stdout=subprocess.PIPE)
 
-    # # ffmpeg output
-    logging.info(commandresult.stdout.decode())
+        # # ffmpeg output
+        logging.info(commandresult.stdout.decode())
 
-    logging.info("completed encoding, starting next")
+        logging.info("completed encoding, starting next")
