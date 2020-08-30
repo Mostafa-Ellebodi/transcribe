@@ -30,4 +30,4 @@ def auto_run(logo_dir, video_dir):
     # embed srt
     embed_srt(new_videos_dir)
 
-auto_run(video_dir)
+auto_run(logo_dir, video_dir)
