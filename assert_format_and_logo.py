@@ -9,7 +9,7 @@ def clean_mkdir(path):
     os.makedirs(path)
 
 out_videos_dir = "converted_videos"
-clean_mkdir(out_videos)
+clean_mkdir(out_videos_dir)
 
 def convert_to_mp4_and_add_logo(logo_dir, video_dir):
     def clean_mkdir(path):
