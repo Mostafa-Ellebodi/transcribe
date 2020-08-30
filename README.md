@@ -33,10 +33,10 @@ https://cloud.google.com/sdk/
 (authenticate your machine by following the auth instructions)
 
 Install ffmpeg
-'''
+,,,
     sudo apt update
     sudo apt install ffmpeg
-'''
+,,,
 Set your virtual environment
 
 If you don't have virtualenv, install it using pip.
