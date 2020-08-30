@@ -58,13 +58,13 @@ def embed_srt(root_dir):
 
     # creating output folder
     try:
-        os.mkdir(os.path.join(rootDir, "output"))
+        os.mkdir(os.path.join(root_dir, "output"))
         logging.debug("created 'output' folder")
     except FileExistsError as e:
         logging.debug("'output' folder already exists. deleting folder")
-        os.rmdir(os.path.join(rootDir, "output"))
+        os.rmdir(os.path.join(root_dir, "output"))
         logging.debug("'output' folder deleted. creating new 'output' folder")
-        os.mkdir(os.path.join(rootDir, "output"))
+        os.mkdir(os.path.join(root_dir, "output"))
         logging.debug("created 'output' folder")
 
 
