@@ -1,4 +1,4 @@
-# subtiltes generation, subtitles embedding and watermarking videos
+# Subtiltes generation, subtitles embedding and videos watermarking
 
 This repository serves the following purposes:
 
