@@ -21,8 +21,8 @@ def convert_to_mp4_and_add_logo(logo_dir, video_dir):
 
         logo = (mp.ImageClip(logo_dir+"/"+logo_image)
                 .set_duration(video.duration)
-                .resize(height=50) # if you need to resize...
-                .margin(right=8, top=8, opacity=0) # (optional) logo-border padding
+                .resize(height=40) # if you need to resize...
+                .margin(right=8, top=8, opacity=0.5) # (optional) logo-border padding
                 .set_pos(("right","top")))
 
         if fn.endswith('.mp4'):
