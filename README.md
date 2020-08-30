@@ -33,31 +33,31 @@ https://cloud.google.com/sdk/
 (authenticate your machine by following the auth instructions)
 
 Install ffmpeg
-,,,
+```
     sudo apt update
     sudo apt install ffmpeg
-,,,
+```
 Set your virtual environment
 
 If you don't have virtualenv, install it using pip.
-'''
+```
     sudo pip install virtualenv
-'''
+```
 Create an isolated Python environment, and install dependencies:
-'''
+```
 virtualenv env
 source env/bin/activate
 pip install -r requirements.txt
-'''
+```
 In goog.py change the bucket_name variable to the name of the storage bucket you wish to use
 
 To run transcription script add video files to videos directory and logo to logo directory
 
 Then run:
 
-'''
+```
     python autorun.py /path/to/logo/directory /path/to/videos/directory
-'''
+```
 
 The script will automatically strip the audio files from the video and convert them to .ogg format
 
