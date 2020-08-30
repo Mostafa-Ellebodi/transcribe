@@ -105,8 +105,8 @@ def embed_srt(root_dir):
         if fn.endswith(".mp4"):
             fn_inputs.append(fn)
             
-    for fn in fn_outputs:
-        if fn not in fn_inputs:
+    for fn in fn_inputs:
+        if fn not in fn_outputs:
             src_dir = os.path.join(root_dir, fn)
             dest_dir = os.path.join(root_dir, "output",fn)
             shutil.copyfile(src_dir, dest_dir)
